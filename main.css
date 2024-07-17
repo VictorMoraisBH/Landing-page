@@ -1,0 +1,162 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    color: #fff;
+}
+
+.hero-section {
+    background: url('https://i.redd.it/high-quality-spider-man-desktop-wallpapers-4k-v0-a42gesu80u3b1.jpg?width=5120&format=pjpg&auto=webp&s=7de812bcab4e9a334b22c9521e9275d1b2d30a80') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.overlay {
+    border-radius: 0.5cm;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 2rem;
+    max-width: 600px; /* Limita a largura do conteúdo para melhor legibilidade */
+    margin: 0 auto; /* Centraliza o conteúdo horizontalmente */
+}
+
+.hero-section h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.hero-section p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.search-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem; /* Espaço acima do formulário de busca */
+    position: relative; /* Para o posicionamento absoluto das sugestões */
+}
+
+.search-form input[type="text"] {
+    padding: 0.5rem;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    width: 100%; /* Ocupa toda a largura disponível */
+    max-width: 400px; /* Limita a largura máxima para evitar que fique muito largo */
+    border: 2px solid #e50914; /* Borda vermelha no campo de busca */
+    border-radius: 4px; /* Borda arredondada */
+    background-color: #333; /* Cor de fundo escura */
+    color: #fff; /* Cor do texto branco */
+    padding-left: 0.75rem; /* Espaçamento interno à esquerda */
+}
+
+.search-form input[type="text"]:focus {
+    outline: none; /* Remove o contorno ao focar */
+    border-color: #fff; /* Borda branca ao focar */
+}
+
+.search-form button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    background-color: #e50914;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease; /* Transição suave na mudança de cor de fundo */
+}
+
+.search-form button:hover {
+    background-color: #ff0000; /* Vermelho mais intenso ao passar o mouse */
+}
+
+/* Estilização das sugestões */
+.suggestions {
+    position: absolute;
+    top: calc(100% + 5px); /* Posiciona abaixo do campo de busca com um pequeno espaço */
+    left: 0;
+    right: 0;
+    background-color: #333; /* Cor de fundo escura */
+    border: 2px solid #e50914; /* Borda vermelha */
+    border-top: none; /* Remove a borda superior */
+    max-height: 200px; /* Altura máxima das sugestões */
+    overflow-y: auto; /* Adiciona scroll se necessário */
+    z-index: 1000; /* Garante que as sugestões estejam acima de outros elementos */
+}
+
+.suggestion {
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Transição suave na mudança de cor de fundo */
+}
+
+.suggestion:hover {
+    background-color: #555; /* Cinza mais escuro ao passar o mouse */
+}
+
+.movie-search {
+    padding: 2rem;
+    text-align: center;
+    
+}
+
+.movie-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.movie {
+    border: 2px solid #fff;
+    padding: 1rem;
+    background-color: #333;
+    border-radius: 4px;
+    text-align: center;
+    transition: transform 0.3s ease; /* Transição suave no efeito de hover */
+}
+
+.movie img {
+    width: 100%; /* Para garantir que a imagem ocupe todo o espaço disponível */
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+.movie h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.movie p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.movie:hover {
+    transform: scale(1.02); /* Efeito de escala ao passar o mouse */
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5); /* Sombra suave ao redor do filme */
+}
+
+.benefits, .testimonials, .plans {
+    padding: 2rem;
+    text-align: center;
+}
+
+.benefits h2, .testimonials h2, .plans h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.benefit, .plan {
+    margin-bottom: 1rem;
+}
+
+footer {
+    background-color: #111;
+    padding: 1rem;
+    text-align: center;
+}

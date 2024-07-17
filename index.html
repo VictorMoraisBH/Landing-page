@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homem-Aranha - Entre na Aventura</title>
+    <link rel="stylesheet" href="./main.css">
+</head>
+<body>
+    <header class="hero-section">
+        <div class="overlay">
+            <h1>Experimente o Poder do Homem-Aranha</h1>
+            <p>Mergulhe nas aventuras épicas de Peter Parker e descubra como é ser o herói que Nova York precisa.</p>
+            <form class="search-form" onsubmit="return searchMovie()">
+                <input type="text" id="movieSearchInput" placeholder="Digite o nome do filme" autocomplete="off" required>
+                <div id="suggestions" class="suggestions"></div>
+                <button type="submit">Procurar</button>
+            </form>
+        </div>
+    </header>
+
+    <section class="movie-search">
+        <h2>Procurar Filmes</h2>
+        <div class="movie-list">
+            <div class="movie">
+                <img src="https://musicart.xboxlive.com/7/07fd4500-0000-0000-0000-000000000002/504/image.jpg?w=1920&h=1080" alt="Homem-Aranha 1">
+                <h3>Homem-Aranha 1</h3>
+                <p>A primeira aventura de Peter Parker.</p>
+            </div>
+            <div class="movie">
+                <img src="https://musicart.xboxlive.com/7/34fd4500-0000-0000-0000-000000000002/504/image.jpg?w=1920&h=1080" alt="Homem-Aranha 2">
+                <h3>Homem-Aranha 2</h3>
+                <p>A batalha contra o Dr. Octopus.</p>
+            </div>
+            <div class="movie">
+                <img src="https://musicart.xboxlive.com/7/d7fc4500-0000-0000-0000-000000000002/504/image.jpg?w=1920&h=1080" alt="Homem-Aranha 3">
+                <h3>Homem-Aranha 3</h3>
+                <p>A batalha contra o Venom</p>
+            </div>
+            <!-- Adicione mais filmes conforme necessário -->
+        </div>
+    </section>
+
+    <section class="benefits">
+        <h2>Por que assistir?</h2>
+        <div class="benefit">
+            <h3>Viva a Ação</h3>
+            <p>Experimente as batalhas épicas e as acrobacias incríveis do Homem-Aranha.</p>
+        </div>
+        <div class="benefit">
+            <h3>Histórias Cativantes</h3>
+            <p>Acompanhe a vida de Peter Parker enquanto ele equilibra suas responsabilidades como herói e estudante.</p>
+        </div>
+        <div class="benefit">
+            <h3>Personagens Icônicos</h3>
+            <p>Conheça os vilões lendários e os aliados de Peter.</p>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <h2>O que os fãs dizem</h2>
+        <blockquote>
+            <p>"O melhor filme de super-herói que já vi!"</p>
+            <cite>Maria S.</cite>
+        </blockquote>
+        <blockquote>
+            <p>"Uma obra-prima moderna."</p>
+            <cite>Jornal X</cite>
+        </blockquote>
+    </section>
+
+    <section class="plans">
+        <h2>Planos e Preços</h2>
+        <div class="plan">
+            <h3>Teste Gratuito</h3>
+            <p>Experimente gratuitamente por 7 dias.</p>
+        </div>
+        <div class="plan">
+            <h3>Desconto Especial</h3>
+            <p>50% de desconto no primeiro mês de assinatura.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>Garantia de segurança dos dados pessoais. Cancelamento fácil a qualquer momento.</p>
+    </footer>
+
+    <script>
+        function searchMovie() {
+            var input = document.getElementById("movieSearchInput").value.toLowerCase();
+            var movies = document.querySelectorAll(".movie");
+
+            movies.forEach(function(movie) {
+                var title = movie.querySelector("h3").innerText.toLowerCase();
+                if (title.includes(input)) {
+                    movie.scrollIntoView({ behavior: "smooth" });
+                }
+            });
+
+            return false; // Evita o envio do formulário
+        }
+
+        // Seleciona o input de busca e o elemento de sugestões
+        const input = document.getElementById("movieSearchInput");
+        const suggestionsContainer = document.getElementById("suggestions");
+
+        // Array com os nomes dos filmes
+        const movies = [
+            "Homem-Aranha 1",
+            "Homem-Aranha 2",
+            "Homem-Aranha 3",
+            // Adicione mais filmes conforme necessário
+        ];
+
+        // Atualiza as sugestões baseadas no input
+        input.addEventListener("input", function() {
+            const searchText = input.value.toLowerCase();
+            if (searchText.trim() === '') {
+                suggestionsContainer.innerHTML = ''; // Limpa as sugestões se o campo estiver vazio
+                return;
+            }
+
+            const filteredMovies = movies.filter(movie => movie.toLowerCase().includes(searchText));
+
+            // Limpa as sugestões anteriores
+            suggestionsContainer.innerHTML = "";
+
+            // Mostra até 5 sugestões encontradas
+            filteredMovies.slice(0, 5).forEach(movie => {
+                const suggestion = document.createElement("div");
+                suggestion.classList.add("suggestion");
+                suggestion.textContent = movie;
+                suggestion.addEventListener("click", function() {
+                    input.value = movie; // Preenche o input com o filme selecionado
+                    suggestionsContainer.innerHTML = ""; // Limpa as sugestões ao selecionar
+                });
+                suggestionsContainer.appendChild(suggestion);
+            });
+        });
+
+        // Fecha as sugestões quando clicar fora do input
+        document.addEventListener("click", function(event) {
+            if (event.target !== input && event.target !== suggestionsContainer) {
+                suggestionsContainer.innerHTML = "";
+            }
+        });
+
+    </script>
+</body>
+</html>
